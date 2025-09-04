@@ -1,0 +1,23 @@
+{
+  "name": "pruebaxpress",
+  "version": "1.0.0",
+  "description": "prueba de deploy de express en render",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EusaHack/pruebaxpress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EusaHack/pruebaxpress/issues"
+  },
+  "homepage": "https://github.com/EusaHack/pruebaxpress#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
