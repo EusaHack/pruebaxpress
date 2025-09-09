@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 const TOKEN = process.env.TOKEN;
 const key = process.env.AES_KEY;
 const key_qa = process.env.AES_KEY_QA;
+const key_data = process.env.AES_KEY_DATA;
+const link_qa = process.env.LINK_QA || "https://qa5.mitec.com.mx/p/gen";
 
 // Middleware para validar token
 function validarToken(req, res, next) {
@@ -83,11 +85,11 @@ app.post("/cifrar-qa",validarToken, async (req, res) => {
     const ciphertext = CryptoJS.AES.encrypt(xml, key_qa).toString();
 
     // Construir data
-    const originalString1 = `xml=<pgs><data0>9265660202</data0><data>${ciphertext}</data></pgs>`;
+    const originalString1 = `xml=<pgs><data0>${key_data}</data0><data>${ciphertext}</data></pgs>`;
     const data = encodeURIComponent(originalString1);
 
     // 🚀 Enviar al endpoint real
-    const response = await axios.post("https://qa5.mitec.com.mx/p/gen", data, {
+    const response = await axios.post(`${link_qa}`, data, {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     });
 
